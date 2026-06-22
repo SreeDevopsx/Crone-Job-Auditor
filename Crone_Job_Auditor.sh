@@ -19,3 +19,17 @@ echo "Generated On : $(date)" >> "$REPORT_FILE"
 echo "Hostname : $(hostname)" >> "$REPORT_FILE"
 echo "" >> "$REPORT_FILE"
 
+# ------------------------------------------------------
+# /etc/crontab
+# ------------------------------------------------------
+
+echo "1. SYSTEM CRONTAB (/etc/crontab)" >> "$REPORT_FILE"
+echo "------------------------------------------------------" >> "$REPORT_FILE"
+
+if [ -f /etc/crontab ]; then
+    cat /etc/crontab >> "$REPORT_FILE"
+else
+    echo "/etc/crontab not found" >> "$REPORT_FILE"
+fi
+
+echo "" >> "$REPORT_FILE"
