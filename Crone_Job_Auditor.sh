@@ -33,3 +33,23 @@ else
 fi
 
 echo "" >> "$REPORT_FILE"
+
+# ------------------------------------------------------
+# Cron Directories
+# ------------------------------------------------------
+
+echo "2. CRON DIRECTORIES" >> "$REPORT_FILE"
+echo "------------------------------------------------------" >> "$REPORT_FILE"
+
+for DIR in \
+/etc/cron.hourly \
+/etc/cron.daily \
+/etc/cron.weekly \
+/etc/cron.monthly
+do
+    echo "" >> "$REPORT_FILE"
+    echo "$DIR" >> "$REPORT_FILE"
+    ls -la "$DIR" 2>/dev/null >> "$REPORT_FILE"
+done
+
+echo "" >> "$REPORT_FILE"
