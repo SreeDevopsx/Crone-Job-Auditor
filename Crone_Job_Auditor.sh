@@ -85,3 +85,16 @@ do
 done
 
 echo "" >> "$REPORT_FILE"
+
+# ------------------------------------------------------
+# Suspicious Cron Entries
+# ------------------------------------------------------
+
+echo "5. SUSPICIOUS COMMAND DETECTION" >> "$REPORT_FILE"
+echo "------------------------------------------------------" >> "$REPORT_FILE"
+
+grep -RiE \
+"curl|wget|nc |netcat|bash -i|python -c|perl -e" \
+/etc/cron* 2>/dev/null >> "$REPORT_FILE"
+
+echo "" >> "$REPORT_FILE"
