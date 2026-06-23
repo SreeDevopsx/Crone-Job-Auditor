@@ -98,3 +98,14 @@ grep -RiE \
 /etc/cron* 2>/dev/null >> "$REPORT_FILE"
 
 echo "" >> "$REPORT_FILE"
+
+# ------------------------------------------------------
+# World Writable Cron Files
+# ------------------------------------------------------
+
+echo "6. WORLD WRITABLE CRON FILES" >> "$REPORT_FILE"
+echo "------------------------------------------------------" >> "$REPORT_FILE"
+
+find /etc/cron* -type f -perm -002 2>/dev/null >> "$REPORT_FILE"
+
+echo "" >> "$REPORT_FILE"
