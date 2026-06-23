@@ -65,3 +65,23 @@ crontab -l 2>/dev/null >> "$REPORT_FILE"
 
 echo "" >> "$REPORT_FILE"
 
+# ------------------------------------------------------
+# All User Cron Jobs
+# ------------------------------------------------------
+
+echo "4. ALL USER CRON JOBS" >> "$REPORT_FILE"
+echo "------------------------------------------------------" >> "$REPORT_FILE"
+
+for USER in $(cut -f1 -d: /etc/passwd)
+do
+    CRON=$(crontab -u "$USER" -l 2>/dev/null)
+
+    if [ ! -z "$CRON" ]; then
+        echo "" >> "$REPORT_FILE"
+        echo "User: $USER" >> "$REPORT_FILE"
+        echo "----------------------" >> "$REPORT_FILE"
+        echo "$CRON" >> "$REPORT_FILE"
+    fi
+done
+
+echo "" >> "$REPORT_FILE"
