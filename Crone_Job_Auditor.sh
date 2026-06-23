@@ -53,3 +53,15 @@ do
 done
 
 echo "" >> "$REPORT_FILE"
+
+# ------------------------------------------------------
+# Root Cron Jobs
+# ------------------------------------------------------
+
+echo "3. ROOT USER CRON JOBS" >> "$REPORT_FILE"
+echo "------------------------------------------------------" >> "$REPORT_FILE"
+
+crontab -l 2>/dev/null >> "$REPORT_FILE"
+
+echo "" >> "$REPORT_FILE"
+
