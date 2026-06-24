@@ -109,3 +109,29 @@ echo "------------------------------------------------------" >> "$REPORT_FILE"
 find /etc/cron* -type f -perm -002 2>/dev/null >> "$REPORT_FILE"
 
 echo "" >> "$REPORT_FILE"
+
+
+# ------------------------------------------------------
+# Cron Service Status
+# ------------------------------------------------------
+
+echo "7. CRON SERVICE STATUS" >> "$REPORT_FILE"
+echo "------------------------------------------------------" >> "$REPORT_FILE"
+
+systemctl status cron --no-pager 2>/dev/null >> "$REPORT_FILE" ||
+systemctl status crond --no-pager 2>/dev/null >> "$REPORT_FILE"
+
+echo "" >> "$REPORT_FILE"
+
+# ------------------------------------------------------
+# Summary
+# ------------------------------------------------------
+
+echo "======================================================" >> "$REPORT_FILE"
+echo "Cron Audit Completed Successfully"
+echo "======================================================" >> "$REPORT_FILE"
+
+echo ""
+echo "Cron Audit Report Generated"
+echo "Location : $REPORT_FILE"
+echo ""
